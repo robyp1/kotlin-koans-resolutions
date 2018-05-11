@@ -2,17 +2,17 @@ package iv_properties
 
 import util.TODO
 
-class LazyProperty(val initializer: () -> Int) {
-    private val lazyValue: Int? = null
-        get() {
-            if (field == null) field = initializer()
+class LazyProperty(val initializer: () -> Int) { //funzione come parametro
+    private val lazyValue : Int? = null
+        get(){
+            if (field == null){
+                field = initializer()
+            }
             return field
         }
-    val lazy: Int
-        get() = lazyValue!!
-
-
-
+    val lazy: Int //todoTask33()
+        get() = lazyValue!! //double bang perchè altrimenti non può convertire Int? (nullabile) in Int (non nullo),
+                            //se null deve lanciare una NPE (null pointer exception) per forza
 }
 
 fun todoTask33(): Nothing = TODO(

@@ -19,22 +19,23 @@ fun task41(): Nothing = TODO(
         }
 )
 
-fun <T, C: MutableCollection<T>> Collection<T>.partitionTo(first: C, second: C, predicate: (T) -> Boolean): Pair<C, C> {
-    for (element in this) {
-        if (predicate(element)) {
-            first.add(element)
-        } else {
-            second.add(element)
-        }
-    }
-    return Pair(first, second)
-}
-
+//IL PREDICATO ESTRAE LETTERE (LE singole lettere senza spzione che VANNO IN words , vedi test)
 fun List<String>.partitionWordsAndLines(): Pair<List<String>, List<String>> {
 //    task41()
     return partitionTo(ArrayList<String>(), ArrayList()) { s -> !s.contains(" ") }
 }
 
+fun <T, C : MutableCollection<T>> Collection<T>.partitionTo(first: C, second: C, predicate: (T) -> Boolean): Pair<C,C> {
+    for (element in this){
+        if ( predicate(element) ){ //il predicato se vale estrae l'elemento del primo array in val (vedi coppia di val nel test chiamante)
+            first.add(element)
+        }
+        else second.add(element)
+    }
+    return Pair(first,second)
+}
+
+//IL PREDICATO ESTRAE LETTERE (LE LETTERE VANNO IN letters , vedi test)
 fun Set<Char>.partitionLettersAndOtherSymbols(): Pair<Set<Char>, Set<Char>> {
 //    task41()
     return partitionTo(HashSet<Char>(), HashSet()) { c -> c in 'a'..'z' || c in 'A'..'Z'}

@@ -19,6 +19,6 @@ data class Person(val name: String, val age: Int)
 
 fun task6(): List<Person> {
 //    todoTask6()
-    return listOf(Person("Alice", 29), Person("Bob", 31))
+    return listOf(Person("Alice",29), Person("Bob", 31))
 }
 

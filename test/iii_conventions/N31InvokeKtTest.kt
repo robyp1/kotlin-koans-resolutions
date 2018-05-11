@@ -15,7 +15,7 @@ class N31InvokeKtTest {
             assertEquals(message, numberOfInvocations, invokeSeveralTimes(invokable).getNumberOfInvocations())
         }
 
-        testInvokable(1) { it() }
+        testInvokable(1, { it() })
         testInvokable(5) { it()()()()() }
         testInvokable(0) { it }
     }

@@ -29,13 +29,19 @@ class D {
 class EffectiveDate<R> : ReadWriteProperty<R, MyDate> {
     var timeInMillis: Long? = null
 
-    operator override fun getValue(thisRef: R, property: KProperty<*>): MyDate = timeInMillis!!.toDate()
-    operator override fun setValue(thisRef: R, property: KProperty<*>, value: MyDate) { timeInMillis = value.toMillis() }
+    operator override fun getValue(thisRef: R, property: KProperty<*>): MyDate {
+         println("$thisRef, thank you for delegating getValue '${property.name}' to me! value is ${timeInMillis!!.toDate()}")
+        return timeInMillis!!.toDate()//todoTask35()
+    }
+    operator override fun setValue(thisRef: R, property: KProperty<*>, value: MyDate) {
+        println("$thisRef, thank you for delegating setValue '${property.name}' to me! value is ${ value.toMillis() }}")
+        timeInMillis = value.toMillis()
+    }//todoTask35()
 }
 
 fun MyDate.toMillis(): Long {
     val c = Calendar.getInstance()
-    c.set(year, month, dayOfMonth, 0, 0, 0)
+    c.set(year, month, dayOfMonth, 0, 0, 0) //azzera il time e calcola da mezzanotte i millisec
     c.set(Calendar.MILLISECOND, 0)
     return c.timeInMillis
 }

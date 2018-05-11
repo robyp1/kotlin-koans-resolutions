@@ -13,9 +13,10 @@ fun todoTask36(): Nothing = TODO(
     documentation = doc36()
 )
 
+
 fun task36(): List<Boolean> {
-    val isEven: Int.() -> Boolean = { this % 2 == 0 }
-    val isOdd: Int.() -> Boolean = { !isEven() }
+    val isEven: Int.() -> Boolean = { this % 2 == 0/*todoTask36()*/ }
+    val isOdd: Int.() -> Boolean = { !isEven()/*todoTask36()*/ }
 
     return listOf(42.isOdd(), 239.isOdd(), 294823098.isEven())
 }

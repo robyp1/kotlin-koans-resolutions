@@ -7,10 +7,12 @@ fun example4() {
 
 fun Shop.getCustomerWithMaximumNumberOfOrders(): Customer? {
     // Return a customer whose order count is the highest among all customers
-    return customers.maxBy { it.orders.size }
+//    todoCollectionTask()
+    return this.customers.maxBy { it.orders.size }
 }
 
 fun Customer.getMostExpensiveOrderedProduct(): Product? {
     // Return the most expensive product which has been ordered
-    return orderedProducts.maxBy { it.price }
+//    todoCollectionTask()
+    return this.orderedProducts.maxBy { it.price }
 }
